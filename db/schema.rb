@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_160840) do
+ActiveRecord::Schema.define(version: 2020_05_09_213503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "apps", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "tenant_id", null: false
+    t.jsonb "data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tenant_id"], name: "index_apps_on_tenant_id"
+  end
 
   create_table "tenants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.jsonb "data"
@@ -22,4 +30,5 @@ ActiveRecord::Schema.define(version: 2020_05_09_160840) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "apps", "tenants"
 end

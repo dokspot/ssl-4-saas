@@ -9,6 +9,8 @@ class Tenant < ApplicationRecord
     terms_of_service_agreed: :boolean,
     name: :string
 
+  has_many :apps
+
   validate :name_uniqueness
   validates :name, presence: true
   validates :email, presence: true
