@@ -3,5 +3,6 @@ rvm:
   - 2.5.1
 services:
   - postgresql
+install: gem install rails
 before_script:
   - rails db:setup
