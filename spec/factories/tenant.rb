@@ -1,4 +1,4 @@
-require 'openssl'
+require "openssl"
 
 FactoryBot.define do
   factory :tenant do
@@ -7,7 +7,8 @@ FactoryBot.define do
       {
         email: Faker::Internet.email,
         terms_of_service_agreed: true,
-        private_key: OpenSSL::PKey::RSA.new(4096)
+        private_key: OpenSSL::PKey::RSA.new(4096),
+        kid: Faker::Internet.uuid,
       }
     }
   end
