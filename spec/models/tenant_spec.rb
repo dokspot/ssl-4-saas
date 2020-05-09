@@ -11,23 +11,19 @@ RSpec.describe Tenant, type: :model do
       expect(@record.errors[:name]).to include("can't be blank")
     end
 
-    it "presence of lets_encrypt" do
-      expect(@record.errors[:lets_encrypt]).to include("can't be blank")
-    end
-
-    it "presence of lets_encrypt.email" do
+    it "presence of email" do
       expect(@record.errors[:email]).to include("can't be blank")
     end
 
-    it "presence of lets_encrypt.terms_of_service_agreed" do
+    it "presence of terms_of_service_agreed" do
       expect(@record.errors[:terms_of_service_agreed]).to include("can't be blank")
     end
 
-    it "presence of lets_encrypt.private_key" do
+    it "presence of private_key" do
       expect(@record.errors[:private_key]).to include("can't be blank")
     end
 
-    it "presence of lets_encrypt.kid" do
+    it "presence of kid" do
       expect(@record.errors[:kid]).to include("can't be blank")
     end
 
@@ -38,8 +34,8 @@ RSpec.describe Tenant, type: :model do
       expect(@record.errors[:name]).to include("has already been taken")
     end
 
-    it "acceptance of lets_encrypt.terms_of_service_agreed" do
-      @record = Tenant.new(lets_encrypt: { terms_of_service_agreed: false })
+    it "acceptance of terms_of_service_agreed" do
+      @record = Tenant.new(terms_of_service_agreed: false)
       @record.valid?
       expect(@record.errors[:terms_of_service_agreed]).to include("must be accepted")
     end

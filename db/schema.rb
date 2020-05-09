@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 2020_05_09_160840) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "tenants", force: :cascade do |t|
-    t.string "name"
-    t.jsonb "lets_encrypt"
+  create_table "tenants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.jsonb "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
