@@ -19,14 +19,6 @@ RSpec.describe Tenant, type: :model do
       expect(@record.errors[:terms_of_service_agreed]).to include("can't be blank")
     end
 
-    it "presence of private_key" do
-      expect(@record.errors[:private_key]).to include("can't be blank")
-    end
-
-    it "presence of kid" do
-      expect(@record.errors[:kid]).to include("can't be blank")
-    end
-
     it "uniqueness of name" do
       tenant = create(:tenant)
       @record = Tenant.new(name: tenant.name)
@@ -38,6 +30,16 @@ RSpec.describe Tenant, type: :model do
       @record = Tenant.new(terms_of_service_agreed: false)
       @record.valid?
       expect(@record.errors[:terms_of_service_agreed]).to include("must be accepted")
+    end
+  end
+
+  context "create" do
+    let (:tenant) { create(:tenant) }
+
+    it "a let encrypt account" do
+      expect(tenant.private_key).to include("BEGIN RSA PRIVATE KEY")
+      expect(tenant.private_key).to include("END RSA PRIVATE KEY")
+      expect(tenant.kid).to be_truthy
     end
   end
 end

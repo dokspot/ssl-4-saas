@@ -52,3 +52,4 @@ end
 gem "simplecov", require: false, group: :test
 # gem "store_model"
 gem "jsonb_accessor", "~> 1.0.0"
+gem "acme-client"
