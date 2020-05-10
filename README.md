@@ -1,24 +1,2 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[![Maintainability](https://api.codeclimate.com/v1/badges/87edb3c01eb4fad2d679/maintainability)](https://codeclimate.com/github/dokspot/ssl-4-saas/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/87edb3c01eb4fad2d679/test_coverage)](https://codeclimate.com/github/dokspot/ssl-4-saas/test_coverage)
