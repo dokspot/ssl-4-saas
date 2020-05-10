@@ -51,4 +51,13 @@ RSpec.describe Tenant, type: :model do
       expect(client.kid).to eq(tenant.kid)
     end
   end
+
+  context "associations" do
+    let (:tenant) { create(:tenant) }
+
+    it "can have many apps", vcr: { cassette_name: "account_new" } do
+      2.times { create(:app, tenant: tenant) }
+      expect(tenant.apps.count).to eq(2)
+    end
+  end
 end
