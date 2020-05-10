@@ -19,7 +19,7 @@ RSpec.describe Tenant, type: :model do
       expect(@record.errors[:terms_of_service_agreed]).to include("can't be blank")
     end
 
-    it "uniqueness of name" do
+    it "uniqueness of name", vcr: { cassette_name: "account_new" } do
       tenant = create(:tenant)
       @record = Tenant.new(name: tenant.name)
       @record.valid?
@@ -36,10 +36,19 @@ RSpec.describe Tenant, type: :model do
   context "create" do
     let (:tenant) { create(:tenant) }
 
-    it "a let encrypt account" do
+    it "a let encrypt account", vcr: { cassette_name: "account_new" } do
       expect(tenant.private_key).to include("BEGIN RSA PRIVATE KEY")
       expect(tenant.private_key).to include("END RSA PRIVATE KEY")
       expect(tenant.kid).to be_truthy
+    end
+  end
+
+  context "methods" do
+    let (:tenant) { create(:tenant) }
+
+    it "should provide a client", vcr: { cassette_name: "account_new" } do
+      client = tenant.client
+      expect(client.kid).to eq(tenant.kid)
     end
   end
 end

@@ -1,0 +1,157 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<DIRECTORY_URL>"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Acme::Client v2.0.6 (https://github.com/unixcharles/acme-client)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 10 May 2020 08:28:47 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '724'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - public, max-age=0, no-cache
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=604800
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "WWs2CIpjziw": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417",
+          "keyChange": "https://acme-staging-v02.api.letsencrypt.org/acme/key-change",
+          "meta": {
+            "caaIdentities": [
+              "letsencrypt.org"
+            ],
+            "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf",
+            "website": "https://letsencrypt.org/docs/staging-environment/"
+          },
+          "newAccount": "https://acme-staging-v02.api.letsencrypt.org/acme/new-acct",
+          "newNonce": "https://acme-staging-v02.api.letsencrypt.org/acme/new-nonce",
+          "newOrder": "https://acme-staging-v02.api.letsencrypt.org/acme/new-order",
+          "revokeCert": "https://acme-staging-v02.api.letsencrypt.org/acme/revoke-cert"
+        }
+    http_version: null
+  recorded_at: Sun, 10 May 2020 08:28:47 GMT
+- request:
+    method: head
+    uri: https://acme-staging-v02.api.letsencrypt.org/acme/new-nonce
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Acme::Client v2.0.6 (https://github.com/unixcharles/acme-client)
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 10 May 2020 08:28:48 GMT
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - public, max-age=0, no-cache
+      Link:
+      - <<DIRECTORY_URL>>;rel="index"
+      Replay-Nonce:
+      - 0002UXvTHXDUhdPO5B6jjmYvKU6AbJlJcsp1nG5um9M0vMg
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=604800
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Sun, 10 May 2020 08:28:48 GMT
+- request:
+    method: post
+    uri: https://acme-staging-v02.api.letsencrypt.org/acme/new-acct
+    body:
+      encoding: UTF-8
+      string: '{"protected":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIm5vbmNlIjoiMDAwMlVYdlRIWERVaGRQTzVCNmpqbVl2S1U2QWJKbEpjc3Axbkc1dW05TTB2TWciLCJ1cmwiOiJodHRwczovL2FjbWUtc3RhZ2luZy12MDIuYXBpLmxldHNlbmNyeXB0Lm9yZy9hY21lL25ldy1hY2N0IiwiandrIjp7ImUiOiJBUUFCIiwia3R5IjoiUlNBIiwibiI6InNUQkVGUllJTmU3ck5QNU1KYTFFNHN2WDZ4SXJsVHJvOUN6d2VVSWZhR09VeGpuVnVzY1VEdzNZc1VFS3pQcm4yQkxyYVN0RGJER3doaXlSc2lPdnlOTVBlc25udVd6OWtONEJyNXpvUTQzWUotUTV0NHVqNkFDMGVGTjd2aXA5TGtLM3hUdURLOWVVdlVKOHBkQ25wOXVHc2FIcGRvWFlCTTRHOFcwWUJSTlNnN0VOS3ZobVJvOVRlaFR3UFhZd2RYQjN2eW5MZnFNOWhrVERLN2xXNmhJSjVQVWh1QmdNMlZNRUJvaUVpNHZIb3lremFOcUlEOGdIclRuR3p6Y3NPeU5EaHNZTl9mM0dVQ3dsMHY0MWNiYkpzRmI1ZWRpcG5JVTdTVUJoVVN3Wnpud2NfM2E3MHBYTGNEWWhnY2ZRZ2IteUFoTllZUGE2TFJ5cmN6bjFGVjhmRTNKSUNjNlJEd29odUoxYTk0OENzbGlINUxXeDRvRDJkbW5WLXZSZ2tQREMwTjBPQ3hBbGItX0ZJaWdTeWlmSDV5UlZEbjNqdENDeXRJYUpwYzY2am0tdFFVRms4YmFJTWNTb08ta3AyZFpUUk1LR2twNzlRc2puNEt4X1V4MkZyN0dSNU9Gd0VKSXl1UnZDcEdlblZObnY3c041cS0xTDJxY1VKcENYeVR1RVo0R1M2V182YkotUWdINUZaQzd0ejU3Y2RORmpEVEpienk4aTZ4ZHpBLS11QzVhYmRIRjV0N0xwZXBYU1NzOFFQRkxxcm5vLXFIZk1wbDdnemM2dU9MNXBKTlNLbTBPSE8wdFBsZnB0RjJBLXluUTJLdWtnUDA5ZXc5QVRlOXVfNjJDR2NEdjBsR2Z0M0NWbExQR3JyelBwY1NLcS1iRUxHc2owM3owIn19","payload":"eyJjb250YWN0IjpbIm1haWx0bzphbmRlcmFAZG9ubmVsbHkuaW5mbyJdLCJ0ZXJtc09mU2VydmljZUFncmVlZCI6dHJ1ZX0","signature":"llJX8NL8jjHaopv3gdCX5RiPOv35A8nb-DYXAi-TuRoDQssPM5Igahu1tBeMjurPTZDhb7CKh3kv-3mKG8K7L5iKfqL2tgA9kzP3b_cME86_ssHHen4O-kgR8ghph0Bz6FdKW_TQWwh-HFaac9rhDMIXtcQLpB_JbnXI8MfMLWh9Iqrni7wnZkPyPuqfCbKFrmMU0Y0KANRVbYdCJ5AHO3NxMaEgh1WPlJ1piQ2_Hy9yshniPFF0yQuh4CyFgFqoiHRc9m7CQNSmXcBN9nLdcITfwdfkV0eeumERRzf20ro59Jrm_qXxsid8JvgEpn2c5v2G2FVZ6MR6lQepHs1vcHw4EYD44j7yMVTwihCViuh2G4DAA0hMJPnEUUpLQFEW-7mgITtWpbUsx5hcbn-Jsxth0KIH6mrxolsCoRYITPKsgvsu7LWAqXZz00G-pemwlDAFkxdQee2POD1qet2i7UMJmck_5fgbivLJmFiBJLmU_1CvuVCM379IIGQzI1yTFDNTTURujqc2xOVTp56ZIRst1P2l4ifEp_RVjnDJ8lBvajni1NTCXocvr_29ztQbXbPrpTPB7ikspsdo893Mu9Caf6zQlnTN1cQMldwOu7IAEs7X3R8VHiYi2vFxq-NLNE9yIwJPLCVJzZzjWUFgqFBsWf0ctd-txScGwHDJ7Xg"}'
+    headers:
+      User-Agent:
+      - Acme::Client v2.0.6 (https://github.com/unixcharles/acme-client)
+      Content-Type:
+      - application/jose+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 10 May 2020 08:28:49 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '928'
+      Connection:
+      - keep-alive
+      Boulder-Requester:
+      - '13592656'
+      Cache-Control:
+      - public, max-age=0, no-cache
+      Link:
+      - <<DIRECTORY_URL>>;rel="index"
+      - <https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf>;rel="terms-of-service"
+      Location:
+      - https://acme-staging-v02.api.letsencrypt.org/acme/acct/13592656
+      Replay-Nonce:
+      - 0002AjLxCLfBJvzNhqQyVLv-hUksJGIYUdaPVM11RPjoqeA
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=604800
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "key": {
+            "kty": "RSA",
+            "n": "sTBEFRYINe7rNP5MJa1E4svX6xIrlTro9CzweUIfaGOUxjnVuscUDw3YsUEKzPrn2BLraStDbDGwhiyRsiOvyNMPesnnuWz9kN4Br5zoQ43YJ-Q5t4uj6AC0eFN7vip9LkK3xTuDK9eUvUJ8pdCnp9uGsaHpdoXYBM4G8W0YBRNSg7ENKvhmRo9TehTwPXYwdXB3vynLfqM9hkTDK7lW6hIJ5PUhuBgM2VMEBoiEi4vHoykzaNqID8gHrTnGzzcsOyNDhsYN_f3GUCwl0v41cbbJsFb5edipnIU7SUBhUSwZznwc_3a70pXLcDYhgcfQgb-yAhNYYPa6LRyrczn1FV8fE3JICc6RDwohuJ1a948CsliH5LWx4oD2dmnV-vRgkPDC0N0OCxAlb-_FIigSyifH5yRVDn3jtCCytIaJpc66jm-tQUFk8baIMcSoO-kp2dZTRMKGkp79Qsjn4Kx_Ux2Fr7GR5OFwEJIyuRvCpGenVNnv7sN5q-1L2qcUJpCXyTuEZ4GS6W_6bJ-QgH5FZC7tz57cdNFjDTJbzy8i6xdzA--uC5abdHF5t7LpepXSSs8QPFLqrno-qHfMpl7gzc6uOL5pJNSKm0OHO0tPlfptF2A-ynQ2KukgP09ew9ATe9u_62CGcDv0lGft3CVlLPGrrzPpcSKq-bELGsj03z0",
+            "e": "AQAB"
+          },
+          "contact": [
+            "mailto:andera@donnelly.info"
+          ],
+          "initialIp": "2a01:cb04:b36:3100:f5e1:d314:6324:94a",
+          "createdAt": "2020-05-10T08:28:49.080082464Z",
+          "status": "valid"
+        }
+    http_version: null
+  recorded_at: Sun, 10 May 2020 08:28:49 GMT
+recorded_with: VCR 5.1.0

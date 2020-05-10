@@ -19,7 +19,7 @@ RSpec.describe App, type: :model do
       expect(@record.errors[:origin]).to include("can't be blank")
     end
 
-    it "uniqueness of name" do
+    it "uniqueness of name", vcr: { cassette_name: "account_new" } do
       app = create(:app)
       @record = App.new(name: app.name, tenant: app.tenant)
       @record.valid?

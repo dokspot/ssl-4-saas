@@ -35,6 +35,8 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
+  gem "vcr"
+  gem "webmock"
 end
 
 group :development do
@@ -50,6 +52,5 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "simplecov", require: false, group: :test
-# gem "store_model"
 gem "jsonb_accessor", "~> 1.0.0"
 gem "acme-client"

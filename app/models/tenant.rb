@@ -1,6 +1,8 @@
 require "openssl"
 require "acme-client"
 
+LE_DIRECTORY = ENV["LE_DIRECTORY"]
+
 class Tenant < ApplicationRecord
   jsonb_accessor :data,
     kid: :string,
@@ -19,6 +21,10 @@ class Tenant < ApplicationRecord
 
   before_create :account_setup
 
+  def client
+    client = Acme::Client.new(private_key: OpenSSL::PKey::RSA.new(private_key), directory: LE_DIRECTORY, kid: kid)
+  end
+
   private
 
   def name_uniqueness
@@ -32,7 +38,7 @@ class Tenant < ApplicationRecord
   end
 
   def gen_kid
-    client = Acme::Client.new(private_key: OpenSSL::PKey::RSA.new(private_key), directory: ENV["LE_DIRECTORY"])
+    client = Acme::Client.new(private_key: OpenSSL::PKey::RSA.new(private_key), directory: LE_DIRECTORY)
     account = client.new_account(contact: "mailto:#{email}", terms_of_service_agreed: terms_of_service_agreed)
     self.kid = account.kid
   end
